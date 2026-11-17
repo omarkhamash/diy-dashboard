@@ -6,6 +6,7 @@ with open("data.json", "r", encoding="utf-8") as f:
     items = json.load(f)
 for item in items:
     checked = st.checkbox(item["name"], value=item["bought"])
+    st.caption(f"{item['quantity']} × {item['unit']} · {item['price']},-  · {item['store']}")
     if checked != item["bought"]:
         item["bought"] = checked
         with open("data.json", "w", encoding="utf-8") as f:

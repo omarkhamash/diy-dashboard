@@ -7,8 +7,9 @@ with open("data.json", "r", encoding="utf-8") as f:
 
 total = 0
 for item in items:
-    total = total + item["quantity"] * item["price"]
-st.metric("Samlet pris", f"{total} kr")
+    if item["bought"] == False:
+        total = total + item["quantity"] * item["price"]
+st.metric("Mangler at købe", f"{total} kr")
 
 for item in items:
     checked = st.checkbox(item["name"], value=item["bought"])
@@ -17,3 +18,4 @@ for item in items:
         item["bought"] = checked
         with open("data.json", "w", encoding="utf-8") as f:
             json.dump(items, f, ensure_ascii=False, indent=2)
+        st.rerun()

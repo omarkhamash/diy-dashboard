@@ -6,4 +6,5 @@ st.write("Velkommen til mit DIY-dashboard!")
 with open("data.json", "r", encoding="utf-8") as f:
     items = json.load(f)
 for item in items:
-    st.checkbox(item["name"], value=item["bought"])
+    checked = st.checkbox(item["name"], value=item["bought"])
+    st.write(checked)

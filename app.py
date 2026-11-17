@@ -3,7 +3,8 @@ import json
 st.title("Mit DIY-dashboard")
 st.write("Velkommen til mit DIY-dashboard!")
 with open("data.json", "r", encoding="utf-8") as f:
-    items = json.load(f)
+    projects = json.load(f)
+items = projects[0]["items"]
 
 total = 0
 for item in items:
@@ -17,5 +18,5 @@ for item in items:
     if checked != item["bought"]:
         item["bought"] = checked
         with open("data.json", "w", encoding="utf-8") as f:
-            json.dump(items, f, ensure_ascii=False, indent=2)
+            json.dump(projects, f, ensure_ascii=False, indent=2)
         st.rerun()

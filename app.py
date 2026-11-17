@@ -4,7 +4,19 @@ st.title("Mit DIY-dashboard")
 st.write("Velkommen til mit DIY-dashboard!")
 with open("data.json", "r", encoding="utf-8") as f:
     projects = json.load(f)
-items = projects[0]["items"]
+    
+# 1. Build the list of names
+project_names = []
+for project in projects:
+    project_names.append(project["name"])
+
+# 2. Show the dropdown
+choice = st.selectbox("Vælg projekt", project_names)
+
+# 3. Find the chosen project's items
+for project in projects:
+    if project["name"] == choice:
+        items = project["items"]
 
 total = 0
 for item in items:

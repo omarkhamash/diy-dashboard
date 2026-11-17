@@ -34,4 +34,3 @@ items = [
     }
 ]
 st.write(items)
-st.write(items[2]["price"])

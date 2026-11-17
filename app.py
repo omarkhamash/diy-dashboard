@@ -33,4 +33,5 @@ items = [
     "bought": False,
     }
 ]
-st.write(items)
+for item in items:
+    st.checkbox(item["name"])

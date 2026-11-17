@@ -1,5 +1,5 @@
 [
-    {
+  {
     "name": "Skruer",
     "unit": "100 stk",
     "quantity": 2,
@@ -7,9 +7,9 @@
     "store": "Bauhaus",
     "url": "https://www.bauhaus.dk/skruer",
     "verified": false,
-    "bought": true
-},
-{
+    "bought": false
+  },
+  {
     "name": "Maling",
     "unit": "5 liter",
     "quantity": 1,
@@ -18,8 +18,8 @@
     "url": "https://www.silvan.dk/maling",
     "verified": false,
     "bought": false
-},
-{
+  },
+  {
     "name": "Trælim",
     "unit": "500 ml",
     "quantity": 1,
@@ -27,6 +27,6 @@
     "store": "Harald Nyborg",
     "url": "https://www.harald-nyborg.dk/traelim",
     "verified": false,
-    "bought": false
-    }
+    "bought": true
+  }
 ]

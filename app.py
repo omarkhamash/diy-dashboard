@@ -6,6 +6,7 @@ with open("data.json", "r", encoding="utf-8") as f:
     items = json.load(f)
 for item in items:
     checked = st.checkbox(item["name"], value=item["bought"])
-    st.write(checked)
     if checked != item["bought"]:
-        st.write("Ændret!")
+        item["bought"] = checked
+        with open("data.json", "w", encoding="utf-8") as f:
+            json.dump(items, f, ensure_ascii=False, indent=2)

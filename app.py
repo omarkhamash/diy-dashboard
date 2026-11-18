@@ -19,19 +19,32 @@ for project in projects:
     if project["name"] == choice:
         selected = project
 items = selected["items"]
-st.caption(selected["description"])
 
-total = 0
-for item in items:
-    if item["bought"] == False:
-        total = total + item["quantity"] * item["price"]
-st.metric("Mangler at købe", f"{total} kr")
+tab1, tab2, tab3, tab4 = st.tabs(["Overblik", "Indkøb", "Guide", "Sikkerhed"])
 
-for item in items:
-    checked = st.checkbox(item["name"], value=item["bought"])
-    st.caption(f"{item['quantity']} × {item['unit']} · {item['price']} kr · {item['store']}")
-    if checked != item["bought"]:
-        item["bought"] = checked
-        with open("data.json", "w", encoding="utf-8") as f:
-            json.dump(projects, f, ensure_ascii=False, indent=2)
-        st.rerun()
+with tab1:
+    st.write("Overblik")
+    st.caption(selected["description"])
+
+with tab2:
+    
+    total = 0
+    for item in items:
+        if item["bought"] == False:
+            total = total + item["quantity"] * item["price"]
+    st.metric("Mangler at købe", f"{total} kr")
+
+    for item in items:
+        checked = st.checkbox(item["name"], value=item["bought"])
+        st.caption(f"{item['quantity']} × {item['unit']} · {item['price']} kr · {item['store']}")
+        if checked != item["bought"]:
+            item["bought"] = checked
+            with open("data.json", "w", encoding="utf-8") as f:
+                json.dump(projects, f, ensure_ascii=False, indent=2)
+            st.rerun()
+
+with tab3:
+    st.write("Guide")
+
+with tab4:
+    st.write("Sikkerhed")

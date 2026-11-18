@@ -2,9 +2,10 @@ import streamlit as st
 import json
 st.title("Mit DIY-dashboard")
 st.write("Velkommen til mit DIY-dashboard!")
+
 with open("data.json", "r", encoding="utf-8") as f:
     projects = json.load(f)
-    
+
 # 1. Build the list of names
 project_names = []
 for project in projects:
@@ -16,7 +17,9 @@ choice = st.selectbox("Vælg projekt", project_names)
 # 3. Find the chosen project's items
 for project in projects:
     if project["name"] == choice:
-        items = project["items"]
+        selected = project
+items = selected["items"]
+st.caption(selected["description"])
 
 total = 0
 for item in items:
